@@ -96,8 +96,9 @@ public class Authentication extends JFrame{
 		ok.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent event){ 
 				
-				User user;
+				User user = null;
 				//new TeacherPage();
+				//new ChoiceSection((Pupil) user);
 				boolean isTeacher = Demo.getUsersList().isTeacher(new Teacher(name.getText(), lastName.getText(),
 						login.getText(), String.valueOf(password.getPassword())));
 				

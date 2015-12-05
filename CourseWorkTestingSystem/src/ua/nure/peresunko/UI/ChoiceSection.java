@@ -79,7 +79,7 @@ public class ChoiceSection extends JFrame{
 				if(math.isSelected()) {
 					new MathTestPage(pupil);
 				} else if(language.isSelected()) {
-					
+					new LanguageTestPage(pupil);
 				} else {
 					JOptionPane.showMessageDialog(choiceSection, "Выберите предмет для тестирования!");
 				}

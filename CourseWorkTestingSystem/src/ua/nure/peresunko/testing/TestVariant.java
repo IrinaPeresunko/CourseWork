@@ -6,10 +6,10 @@ import ua.nure.peresunko.questions.Question;
 public class TestVariant {
 	
 	private int id;
-	private static int countOfQuestions = 15;
 	private String theme;
 	private Question[] questions;
 	private Answer[] answers;
+	private int countOfQuestions;
 	private double maxCountPointsInTheTest = 0;
 	
 	public TestVariant() {
@@ -26,12 +26,12 @@ public class TestVariant {
 		this.answers = answers;
 	}
 	
-	public static int getCountOfQuestions() {
+	public int getCountOfQuestions() {
 		return countOfQuestions;
 	}
 
-	public static void setCountOfQuestions(int countOfQuestions) {
-		TestVariant.countOfQuestions = countOfQuestions;
+	public void setCountOfQuestions(int countOfQuestions) {
+		this.countOfQuestions = countOfQuestions;
 	}
 
 	public int getId() {

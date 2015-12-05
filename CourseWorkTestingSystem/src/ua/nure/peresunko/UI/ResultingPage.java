@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ua.nure.peresunko.user.Pupil;
+//import ua.nure.peresunko.user.Pupil;
 
 
 public class ResultingPage extends JFrame{
@@ -16,9 +16,10 @@ public class ResultingPage extends JFrame{
 
 	private static JFrame resultingPage;
 	
-	private static Pupil pupil;
+	//private static Pupil pupil;
 	private static double countOfPoints;
 	private static double maxNumberOfPoints;
+	private static int markIn12System;
 
 	/*
 	 * method to return uniqueInstance of class 
@@ -30,8 +31,8 @@ public class ResultingPage extends JFrame{
 			return resultingPage;
 	}
 	
-	public ResultingPage(Pupil pupil, int countOfPoints, double maxNumberOfPoints){
-		
+	//public ResultingPage(Pupil pupil, int countOfPoints, double maxNumberOfPoints, double markIn12System){
+	public ResultingPage(int countOfPoints, double maxNumberOfPoints, int markIn12System){	
 		ResultingPage.getInstance();
 		Authentication.getInstance().setVisible(false);
 		MathTestPage.getInstance().setVisible(false);
@@ -42,7 +43,8 @@ public class ResultingPage extends JFrame{
         mainPanel.setLayout(new BorderLayout());
         
         ResultingPage.countOfPoints = countOfPoints;
-		ResultingPage.pupil = pupil;
+	//	ResultingPage.pupil = pupil;
+		ResultingPage.markIn12System = markIn12System;
 		
         resultingPage.add(mainPanel);
 		resultingPage.setBounds(400, 180, 500, 300);
@@ -64,7 +66,7 @@ public class ResultingPage extends JFrame{
 	
 	public static String getRules() {
 		StringBuffer buffer = new StringBuffer();
-		double markIn12System = pupil.getMarkByMath();
+	
 		buffer.append("<html><h2> Результат тестирования: </h2>")
 			.append("<font face = 'verdana' size = 3> ")
 			.append("<b> Количество правильных ответов: ").append(countOfPoints)

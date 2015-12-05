@@ -28,7 +28,7 @@ public class TeacherPage extends JFrame{
 	JButton ok = new JButton("Добавить ученика");
 	JLabel label = new JLabel("                                                   "
 			+ "Успеваемость учеников 4-ых классов");
-	//private static User[] pupils;
+	
 	private static List<User> pupils = new ArrayList<User>();
 	
 	/*

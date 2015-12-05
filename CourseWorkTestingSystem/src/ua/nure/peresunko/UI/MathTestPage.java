@@ -31,6 +31,8 @@ public class MathTestPage extends JFrame{
 	private JLabel introducing = new JLabel("Рады приветствовать Вас в системе. Время выполнения теста: 45 минут. "
 			+ "Не забывайте отмечать выбранные ответы и заполнять все необходимые поля!");
 	
+	private int countOfQuestions = 15;
+	
 	private TestVariant test; 
 	private int countOfChoiceQuestions = 5;
 	private ButtonGroup[] groups = new ButtonGroup[countOfChoiceQuestions + 2];
@@ -71,13 +73,13 @@ public class MathTestPage extends JFrame{
 		
 		for(int i = 0, j = 10, k = 40; i < 15; i++) {
 			j = j + 20; k = k + 20;
-			JLabel quest = new JLabel(test.getQuestions()[i].getQuestion());
-			quest.setBounds(50, j, 2000, k);
-			testPage.add(quest);
+			JLabel question = new JLabel(test.getQuestions()[i].getQuestion());
+			question.setBounds(50, j, 2000, k);
+			testPage.add(question);
 			if(i == 14) {
-				quest = new JLabel("Сколько раз она сумела набросить кольцо на крючок?");
-				quest.setBounds(65, j+10, 2000, k+10);
-				testPage.add(quest);
+				question = new JLabel("Сколько раз она сумела набросить кольцо на крючок?");
+				question.setBounds(65, j+10, 2000, k+10);
+				testPage.add(question);
 			}
 		}
 		
@@ -115,18 +117,19 @@ public class MathTestPage extends JFrame{
 				pupil.setMarkByMath(resultMark);
 				Demo.getUsersList().setMarkToPupilByMath(pupil, resultMark);
 				Demo.getUsersList().print();
-				new ResultingPage(pupil, calculatingMark , calculatingMaxCountOfPoints);
+				new ResultingPage(calculatingMark , calculatingMaxCountOfPoints, resultMark);
 			}
 		});
 	}
 	
 	public void initialization() {
 		this.test = new TestVariant(1, "math", questions, answers);
+		test.setCountOfQuestions(countOfQuestions);
 	}
 	
 	public Question[] createQuestions() {
 		
-		Question[] questions = new Question[TestVariant.getCountOfQuestions()];
+		Question[] questions = new Question[countOfQuestions];
 		
 		questions[0] = new QuestionFillTheGaps(
 				"1) Запиши цифрами число двести тридцать восемь тысяч семьсот шесть.");
@@ -167,9 +170,9 @@ public class MathTestPage extends JFrame{
 		return questions;
 	}
 	
-	public static Answer[] createAnswers() {
+	public Answer[] createAnswers() {
 		
-		Answer[] answers = new Answer[TestVariant.getCountOfQuestions()];
+		Answer[] answers = new Answer[countOfQuestions];
 		
 		answers[0] = new AnswerForFillTheGapQuestion("238706");
 		answers[1] = new AnswerForFillTheGapQuestion("10101");
@@ -207,6 +210,7 @@ public class MathTestPage extends JFrame{
 			System.out.println();
 		}
 	}
+	
 	public void createChoiceQuestions(int positionInTheQuestionsVar, int numberOfQuestion, int k) {
 		questionsVar[positionInTheQuestionsVar] = new JRadioButton[4];
 		for(int i = 0; i < questionsVar[positionInTheQuestionsVar].length; i++) {
